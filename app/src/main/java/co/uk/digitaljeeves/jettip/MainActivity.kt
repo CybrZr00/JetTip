@@ -1,7 +1,6 @@
 package co.uk.digitaljeeves.jettip
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.BorderStroke
@@ -38,7 +37,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MyApp {
-                Column() {
+                Column{
                     MainContent()
                 }
             }
@@ -78,7 +77,6 @@ fun TopHeader(totalPerPerson: Double = 134.0){
         }
     }
 }
-@OptIn(ExperimentalComposeUiApi::class)
 @Preview
 @Composable
 fun MainContent(){
@@ -176,8 +174,9 @@ fun BillForm(modifier: Modifier = Modifier,
                         RoundIconButton(
                             imageVector = Icons.Default.Add,
                             onClick = {
-                                if (splitByState.value <range.last)
-                                splitByState.value++
+                                if (splitByState.value <range.last) {
+                                    splitByState.value++
+                                }
 
                                 totalPerPersonState.value = calculateTotalPerPerson(
                                     totalBill = totalBillState.value.toDouble(),
@@ -222,7 +221,7 @@ fun BillForm(modifier: Modifier = Modifier,
                 )
             }
             }else{
-                Box(){}
+                Box {}
             }
         }
     }
@@ -236,7 +235,7 @@ fun BillForm(modifier: Modifier = Modifier,
 fun DefaultPreview() {
     JetTipTheme {
         MyApp {
-            Column() {
+            Column {
                 MainContent()
             }
 
